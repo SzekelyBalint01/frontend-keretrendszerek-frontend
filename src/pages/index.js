@@ -1,12 +1,13 @@
 import React, { useState, useRef } from "react";
+import { Helmet } from "react-helmet";
 import "./Home.css";
 
 function Home() {
   const [file, setFile] = useState(null);
+  const [downloadFile, setDownloadFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [downloadReady, setDownloadReady] = useState(false);
   const inputRef = useRef(null);
-
   const handleFileSelect = () => {
     inputRef.current.click();
   };
@@ -17,10 +18,10 @@ function Home() {
 
   const handleDownload = () => {
     if (downloadReady) {
-      const url = window.URL.createObjectURL(new Blob([file]));
+      const url = window.URL.createObjectURL(new Blob([downloadFile]));
       const link = document.createElement("a");
       link.href = url;
-      link.setAttribute("download", "result.txt");
+      link.setAttribute("download", "translated.txt");
       document.body.appendChild(link);
       link.click();
       link.parentNode.removeChild(link);
@@ -38,22 +39,19 @@ function Home() {
       method: "POST",
       body: formData,
     })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.blob();
-      })
+      .then((response) => response.blob())
       .then((blob) => {
+        setDownloadFile(blob);
         const url = window.URL.createObjectURL(new Blob([blob]));
         const link = document.createElement("a");
         link.href = url;
-        link.setAttribute("download", "result.txt");
+        link.setAttribute("download", `translated.txt`);
         document.body.appendChild(link);
         setDownloadReady(true);
         setLoading(false);
         link.parentNode.removeChild(link);
       })
+
       .catch((error) => {
         console.error("There was an error downloading the file", error);
         setLoading(false);
@@ -62,6 +60,9 @@ function Home() {
 
   return (
     <div>
+      <Helmet>
+        <title>PTE | Translate</title>
+      </Helmet>
       <div className="container">
         <h1>Upload Page</h1>
         <form onSubmit={handleSubmit}>
@@ -81,7 +82,7 @@ function Home() {
             )}
             {downloadReady ? (
               <div className="result-buttons">
-                <div class="arrow">
+                <div className="arrow">
                   <span></span>
                   <span></span>
                   <span></span>
@@ -112,13 +113,13 @@ function Home() {
             <div className="language">
               <p>Angol</p>
             </div>
-            <div class="scrollable-text-left"></div>
+            <div className="scrollable-text-left"></div>
           </div>
           <div className="language-container">
             <div className="language">
               <p>Magyar</p>
             </div>
-            <div class="scrollable-text-right"></div>
+            <div className="scrollable-text-right"></div>
           </div>
         </div>
       </div>
