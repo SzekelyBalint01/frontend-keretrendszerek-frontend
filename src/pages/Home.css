@@ -1,6 +1,15 @@
 html {
   background-color: bisque;
 }
+h1,
+h2 {
+  text-align: center;
+  color: rgb(160, 129, 95);
+}
+
+h2 {
+  padding-bottom: 5rem;
+}
 
 button {
   margin: 0 10px 0px 10px;

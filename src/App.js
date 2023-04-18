@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages";
 import About from "./pages/About";
-
+import Footer from "./components/Footer/Footer";
 function App() {
   return (
     <Router>
@@ -13,6 +13,7 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

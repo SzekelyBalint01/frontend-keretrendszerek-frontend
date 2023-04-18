@@ -65,7 +65,6 @@ function Home() {
       <Helmet>
         <title>PTE | Translate</title>
       </Helmet>
-
       <div class="wrap">
         <svg class="svg" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -140,7 +139,12 @@ function Home() {
         </svg>
       </div>
       <div className="container">
-        <h1>Upload Page</h1>
+        <h1>Welcome</h1>
+        <h2>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+          <br></br> ased do eiusmod tempor incididunt ut labore et dolore magna
+          aliqua.
+        </h2>
         <form onSubmit={handleSubmit}>
           <div className="button-wrapper">
             <button type="button" onClick={handleFileSelect}>
