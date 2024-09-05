@@ -1,5 +1,5 @@
 import React from "react";
-import "./About.css";
+import "./about.css";
 
 const About = () => {
   return (
@@ -7,7 +7,7 @@ const About = () => {
       <div className="container">
         <h1>How to use?</h1>
         <p>
-          Upload an eglish .txt file. The program will list all words and
+          Upload an english .txt file. The program will list all words and
           translate them.
         </p>
         <p>You can save the result into a txt file.</p>

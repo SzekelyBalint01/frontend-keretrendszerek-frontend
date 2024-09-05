@@ -36,7 +36,7 @@ function Home() {
 
     const formData = new FormData();
     formData.append("file", file);
-    fetch("http://localhost:8081/textTranslate", {
+    fetch("https://localhost:7190/upload", {
       method: "POST",
       body: formData,
     })
